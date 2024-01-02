@@ -45,3 +45,7 @@ Project provides:
  * Start `colima start`
     * In case you receive error `137` - add more RAM `colima start --memory 8`
  * Stop `colima stop`
+
+ ### Propmpt 
+
+ * Use `.prompt-generating-super-prompt.txt` to generate good prompt for LLM
