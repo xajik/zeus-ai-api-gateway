@@ -1,0 +1,47 @@
+meta {
+  name: vision
+  type: http
+  seq: 2
+}
+
+post {
+  url: https://vision.googleapis.com/v1/images:annotate?key={{google-cloud-api-key}}
+  body: json
+  auth: none
+}
+
+query {
+  key: {{google-cloud-api-key}}
+}
+
+headers {
+  Content-Type: application/json
+  access_token: {{google-cloud-api-key}}
+}
+
+auth:bearer {
+  token: {{google-cloud-api-key}}
+}
+
+body:json {
+  {
+    "requests": [
+      {
+        "image": {
+          "content": "{{base64_image}}"
+        },
+        "features": [
+          {
+            "type": "DOCUMENT_TEXT_DETECTION"
+          },
+          {
+            "type": "FACE_DETECTION"
+          }
+        ],
+        "imageContext": {
+          "languageHints": ["en-t-i0-handwrit"]
+        }
+      }
+    ]
+  }
+}

@@ -1,0 +1,29 @@
+meta {
+  name: llama-2-7b-chat-int8
+  type: http
+  seq: 3
+}
+
+post {
+  url: https://api.cloudflare.com/client/v4/accounts/6172e9a8ecbb6fc942e9a3e92d204a1e/ai/run/@cf/meta/llama-2-7b-chat-int8
+  body: json
+  auth: bearer
+}
+
+auth:bearer {
+  token: {{cloudflare-api-key}}
+}
+
+body:json {
+  { 
+    "messages": [
+    { 
+      "role": "system", 
+     "content": "You are a helpful bank assistant. You received OCR results from the PH ID documnets, strcture data into most likely pairs" 
+    },
+    { 
+      "role": "user", "content": "OCR Results (Reply in map with key value pair only): A * MAGAYOR ARALMASAN PILIPINAS MARAT SURNAME UMIPGG ERWIN GENCNN SEX MALE DATE OF BIRTH 1980/07/07 REPUBLIC OF THE PHILIPPINES Unified Multi-Purpose ID GIVEN NAME MIDDLE NAME mag CRN-0033-7888888-1 ADDRESS B222 SOUTH SEA ST RIZAL MAKATI CITY MM PHI 1818. " 
+    }
+  ]
+  }
+}

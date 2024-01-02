@@ -1,0 +1,11 @@
+admin/*
+!admin/.gitkeep
+
+admin_logs/*
+!admin_logs/.gitkeep
+
+data/*
+!data/.gitkeep
+
+logs/*
+!logs/.gitkeep

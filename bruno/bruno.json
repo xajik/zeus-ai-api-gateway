@@ -1,0 +1,13 @@
+{
+  "version": "1",
+  "name": "Zeus",
+  "type": "collection",
+  "scripts": {
+    "moduleWhitelist": [
+      "form-data"
+    ],
+    "filesystemAccess": {
+      "allow": true
+    }
+  }
+}

@@ -1,0 +1,1 @@
+Based on the OCR find all possible infromation about the place on the photo. If this is restaurant add data like category, social pages, etc.

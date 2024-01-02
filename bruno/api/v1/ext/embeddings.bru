@@ -1,0 +1,16 @@
+meta {
+  name: embeddings
+  type: http
+  seq: 6
+}
+
+post {
+  url: http://{{host}}:{{port}}/api/v1/ext/embedding
+  body: json
+  auth: none
+}
+
+body:json {
+  { "text": ["This is a story about an orange cloud", "This is a story about a llama", "This is a story about a hugging emoji"] 
+  }
+}

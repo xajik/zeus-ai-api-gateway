@@ -1,0 +1,15 @@
+meta {
+  name: image_clasification
+  type: http
+  seq: 2
+}
+
+post {
+  url: https://api.cloudflare.com/client/v4/accounts/6172e9a8ecbb6fc942e9a3e92d204a1e//ai/run/@cf/microsoft/resnet-50
+  body: none
+  auth: bearer
+}
+
+auth:bearer {
+  token: {{cloudflare-api-key}}
+}

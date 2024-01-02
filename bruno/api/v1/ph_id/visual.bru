@@ -1,0 +1,46 @@
+meta {
+  name: visual
+  type: http
+  seq: 2
+}
+
+post {
+  url: http://{{host}}:{{port}}/api/v1/ph/visual
+  body: multipartForm
+  auth: none
+}
+
+headers {
+  Content-Type: multipart/form-data
+}
+
+body:multipart-form {
+  type: file
+  file: test.jpg
+}
+
+vars:pre-request {
+  test-file: /zeus/bruno/poi.jpeg
+}
+
+script:pre-request {
+  const FormData = require('form-data');
+  const fs = require('fs');
+  
+  function Form() {}
+  Form.prototype.is = new FormData();
+  Form.prototype.append = function(key, value, isFile = false) {
+    if (isFile) {
+      value = fs.createReadStream(value);
+    }
+    this.is.append(key, value);
+    req.setBody(this.is);
+    return this;
+  };
+  const form = new Form();
+  
+  module.exports = form;
+  
+  form
+    .append('file', bru.getVar('test-file'), isFile = true);
+}

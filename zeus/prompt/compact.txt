@@ -1,0 +1,1 @@
+Compact received text into most important features, return JSON key value pair

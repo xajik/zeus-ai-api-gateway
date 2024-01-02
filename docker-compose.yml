@@ -1,0 +1,67 @@
+version: "3.9"
+services:
+  db:
+    build:
+      context: db
+    restart: always
+    environment:
+      POSTGRES_DB: ${RDS_DB_NAME}
+      POSTGRES_USER: ${RDS_USERNAME}
+      PGUSER: ${RDS_USERNAME}
+      POSTGRES_PASSWORD: ${RDS_PASSWORD}
+      PGDATA: /var/lib/postgresql/data
+      PGPASSWORD: ${RDS_PASSWORD}
+    volumes:
+      - postgres:/var/lib/postgresql/data/
+      - postgres_logs:/var/log/postgresql
+      - ./db/scripts:/scripts
+      - ./db/migrations:/migrations
+    ports:
+      - "5432:5432"
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -p 5432"]
+      interval: 5s
+      timeout: 5s
+      retries: 3
+    networks:
+      - pgadm_db_network
+  db-admin:
+    image: dpage/pgadmin4:latest
+    restart: always
+    environment:
+      PGADMIN_DEFAULT_EMAIL: ${PG_ADMIN_EMAIL}
+      PGADMIN_DEFAULT_PASSWORD: ${PG_ADMIN_PASSWORD}
+      PGADMIN_LISTEN_PORT: 80
+    ports:
+      - "8080:80"
+    volumes:
+      - pgadmin:/var/lib/pgadmin
+      - pgadmin_logs:/var/log/pgadmin
+    links:
+      - "db:pgsql-server"
+    depends_on: 
+      - db
+    networks:
+      - pgadm_db_network
+  athena:
+    build:
+      context: ./athena
+    ports:
+      - "3005:3005"
+    volumes:
+      - ./athena:/app
+    environment:
+      - TRANSFORMERS_CACHE=/app/cache
+      - HF_HOME=/app/cache
+networks:
+  pgadm_db_network:
+    name: pgadm-db-network
+volumes:
+  postgres:
+    driver: local
+  postgres_logs:
+    driver: local
+  pgadmin:
+    driver: local
+  pgadmin_logs:
+    driver: local

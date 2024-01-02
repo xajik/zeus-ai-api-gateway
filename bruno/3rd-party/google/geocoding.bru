@@ -1,0 +1,17 @@
+meta {
+  name: geocoding
+  type: http
+  seq: 5
+}
+
+get {
+  url: https://maps.googleapis.com/maps/api/geocode/json?latlng=28.640964,77.235875&key={{google-cloud-api-key}}&enable_address_descriptor=true
+  body: none
+  auth: none
+}
+
+query {
+  latlng: 28.640964,77.235875
+  key: {{google-cloud-api-key}}
+  enable_address_descriptor: true
+}

@@ -1,0 +1,25 @@
+meta {
+  name: palm2
+  type: http
+  seq: 1
+}
+
+post {
+  url: https://generativelanguage.googleapis.com/v1beta3/models/text-bison-001:generateText?key={{palm2-api-key}}
+  body: json
+  auth: none
+}
+
+query {
+  key: {{palm2-api-key}}
+}
+
+headers {
+  Content-Type: application/json
+}
+
+body:json {
+  { "prompt": 
+   { "text": "How to verify if PH ID is valid?"} 
+  }
+}

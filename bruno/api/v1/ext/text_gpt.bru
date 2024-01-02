@@ -1,0 +1,17 @@
+meta {
+  name: text_gpt
+  type: http
+  seq: 5
+}
+
+post {
+  url: http://{{host}}:{{port}}/api/v1/ext/text_gpt
+  body: json
+  auth: none
+}
+
+body:json {
+  {
+    "query": "OCR Results : A * MAGAYOR ARALMASAN PILIPINAS MARAT SURNAME UMIPGG ERWIN GENCNN SEX MALE DATE OF BIRTH 1980/07/07 REPUBLIC OF THE PHILIPPINES Unified Multi-Purpose ID GIVEN NAME MIDDLE NAME mag CRN-0033-7888888-1 ADDRESS B222 SOUTH SEA ST RIZAL MAKATI CITY MM PHI 1818."
+  }
+}

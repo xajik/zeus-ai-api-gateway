@@ -1,0 +1,17 @@
+meta {
+  name: llama7b
+  type: http
+  seq: 8
+}
+
+post {
+  url: http://{{host}}:{{port}}/api/v1/ext/text_llama
+  body: json
+  auth: none
+}
+
+body:json {
+  {
+    "query": "OCR Results (Reply in map with key value pair only): A * MAGAYOR ARALMASAN PILIPINAS MARAT SURNAME UMIPGG ERWIN GENCNN SEX MALE DATE OF BIRTH 1980/07/07 REPUBLIC OF THE PHILIPPINES Unified Multi-Purpose ID GIVEN NAME MIDDLE NAME mag CRN-0033-7888888-1 ADDRESS B222 SOUTH SEA ST RIZAL MAKATI CITY MM PHI 1818. "
+  }
+}

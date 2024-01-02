@@ -1,0 +1,33 @@
+meta {
+  name: gemini
+  type: http
+  seq: 3
+}
+
+post {
+  url: https://generativelanguage.googleapis.com/v1beta/models/gemini-pro:streamGenerateContent?key={{palm2-api-key}}
+  body: json
+  auth: none
+}
+
+query {
+  key: {{palm2-api-key}}
+}
+
+headers {
+  Content-Type: application/json
+}
+
+body:json {
+  {
+    "contents":[
+      {
+        "parts":[
+          {
+            "text": "You are a helpful bank assistant. You received OCR results from the PH ID documnets, strcture data into most likely pairs. OCR Results (Reply in map with key value pair only): A * MAGAYOR ARALMASAN PILIPINAS MARAT SURNAME UMIPGG ERWIN GENCNN SEX MALE DATE OF BIRTH 1980/07/07 REPUBLIC OF THE PHILIPPINES Unified Multi-Purpose ID GIVEN NAME MIDDLE NAME mag CRN-0033-7888888-1 ADDRESS B222 SOUTH SEA ST RIZAL MAKATI CITY MM PHI 1818"
+          }
+        ]
+      }
+    ]
+  }
+}

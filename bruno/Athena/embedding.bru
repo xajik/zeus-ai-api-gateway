@@ -1,0 +1,15 @@
+meta {
+  name: embedding
+  type: http
+  seq: 1
+}
+
+post {
+  url: http://{{host}}:{{port_athena}}/embed
+  body: json
+  auth: none
+}
+
+body:json {
+  { "text": "This is a story about an orange cloud" }
+}

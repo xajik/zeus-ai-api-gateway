@@ -1,0 +1,16 @@
+meta {
+  name: geocoding
+  type: http
+  seq: 7
+}
+
+get {
+  url: http://{{host}}:{{port}}/api/v1/ext/geocoding?lat=35.339600&lng=25.133500
+  body: none
+  auth: none
+}
+
+query {
+  lat: 35.339600
+  lng: 25.133500
+}

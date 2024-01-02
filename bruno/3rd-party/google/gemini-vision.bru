@@ -1,0 +1,37 @@
+meta {
+  name: gemini-vision
+  type: http
+  seq: 4
+}
+
+post {
+  url: https://generativelanguage.googleapis.com/v1beta/models/gemini-pro-vision:streamGenerateContent?key={{palm2-api-key}}
+  body: json
+  auth: none
+}
+
+query {
+  key: {{palm2-api-key}}
+}
+
+headers {
+  Content-Type: application/json
+}
+
+body:json {
+  {
+    "contents":[
+      {
+        "parts":[
+          {"text": "Is provided ID photo real or fake or digital sample"},
+          {
+            "inline_data": {
+              "mime_type":"image/jpeg",
+              "data": "{{base64_image}}"
+            }
+          }
+        ]
+      }
+    ]
+  }
+}

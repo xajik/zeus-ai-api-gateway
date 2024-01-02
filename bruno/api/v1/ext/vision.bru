@@ -1,0 +1,17 @@
+meta {
+  name: vision
+  type: http
+  seq: 1
+}
+
+post {
+  url: http://{{host}}:{{port}}/api/v1/ext/vision
+  body: json
+  auth: none
+}
+
+body:json {
+  {
+    "base64": "{{base64_image}}"
+  }
+}

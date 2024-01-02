@@ -1,0 +1,19 @@
+meta {
+  name: bge-base-en-v1.5
+  type: http
+  seq: 1
+}
+
+post {
+  url: https://api.cloudflare.com/client/v4/accounts/6172e9a8ecbb6fc942e9a3e92d204a1e/ai/run/@cf/baai/bge-base-en-v1.5
+  body: json
+  auth: bearer
+}
+
+auth:bearer {
+  token: {{cloudflare-api-key}}
+}
+
+body:json {
+  { "text": ["This is a story about an orange cloud", "This is a story about a llama", "This is a story about a hugging emoji"] }
+}
