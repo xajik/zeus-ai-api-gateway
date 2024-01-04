@@ -1,0 +1,25 @@
+@startmindmap
+* localhost:3001/api/v1/
+
+** ext 
+***_ <&star> ExtApiUsecase
+
+***[#Orange] openai
+****[#Orange] completion
+****[#Orange] visual
+****[#Orange] embedding
+
+***[#PaleGreen] gemini
+****[#PaleGreen] completion
+****[#PaleGreen] visual
+
+***[#SkyBlue] cloudflare
+****[#SkyBlue] completion
+****[#SkyBlue] embedding
+
+***[#LightCoral] google
+****[#LightCoral] places
+****[#LightCoral] vision
+
+
+@endmindmap

@@ -1,7 +1,7 @@
 # Ultimate AI API Gateway
 
 <p align="center">
-  <img src="./img/zeus.png" alt="alt text" width="500px"/>
+  <img src="./docs/img/zeus.png" alt="alt text" width="500px"/>
 </p>
 
 Starting point for LLM POC project
@@ -14,10 +14,15 @@ Project provides:
     * Utils for migrations
     * PG Admin to browse the database
  * Rust, Actix-web server with:
-    * LLM API: OpenAI, Gemini, Palm, Cloudflare 
+    * API 
+      * LLM OpenAI, Gemini, Palm, Cloudflare 
         * Complettion, Visual & Embeddings 
-    * Other API: Google Vision, Google Places
+      * Other API: Google Vision, Google Places
+      * <p align="center">
+         <img src="./docs/img/ext-api.png" alt="alt text" width="250px"/>
+      </p>
     * Connection with Postgress
+      * Repository to work with DB & Vectors / Embedding
  * <a href="https://www.usebruno.com/">Bruno</a> for testing APIs
  * Athena Flask app for:
    * Langchain
@@ -25,7 +30,7 @@ Project provides:
       * With PGVector
    * Natural Language Communications with Postgres
       * <p align="center">
-            <img src="./img/athena-nl-sql.png" alt="alt text" width="250px"/>
+            <img src="./docs/img/athena-nl-sql.png" alt="alt text" width="250px"/>
          </p>
 
 ### Database 
@@ -33,7 +38,7 @@ Project provides:
  * Preview at PGAdmin `http://localhost:8080/browser/` 
  * Connect with credentials from `.env` file
   * <p align="center">
-    <img src="./img/pg-admin-properties.png" alt="alt text" width="300px"/>
+    <img src="./docs/img/pg-admin-properties.png" alt="alt text" width="300px"/>
     </p>
 
 ### Docker
