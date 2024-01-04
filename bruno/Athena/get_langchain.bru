@@ -1,0 +1,15 @@
+meta {
+  name: get_langchain
+  type: http
+  seq: 3
+}
+
+get {
+  url: http://{{host}}:{{port_athena}}/get_langchain?msg=Write is a story about an orange cloud in 10 words
+  body: json
+  auth: none
+}
+
+query {
+  msg: Write is a story about an orange cloud in 10 words
+}

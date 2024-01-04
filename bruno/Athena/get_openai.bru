@@ -1,0 +1,15 @@
+meta {
+  name: get_openai
+  type: http
+  seq: 2
+}
+
+get {
+  url: http://{{host}}:{{port_athena}}/get_openai?msg=Write is a story about an orange cloud in 10 words
+  body: json
+  auth: none
+}
+
+query {
+  msg: Write is a story about an orange cloud in 10 words
+}

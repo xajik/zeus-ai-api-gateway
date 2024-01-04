@@ -13,16 +13,20 @@ Project provides:
     * PG Vector extension
     * Utils for migrations
     * PG Admin to browse the database
- * <b>ZEUS</b> - Rust, Actix-web server with:
+ * Rust, Actix-web server with:
     * LLM API: OpenAI, Gemini, Palm, Cloudflare 
         * Complettion, Visual & Embeddings 
     * Other API: Google Vision, Google Places
     * Connection with Postgress
  * <a href="https://www.usebruno.com/">Bruno</a> for testing APIs
- * <b>Athena</b> Python, Flask app
-   * For everyting you cannot do in Rust 
-   * Integrates Hugging Face library
-      * Embedding routes 
+ * Athena Flask app for:
+   * Langchain
+   * RAG with Llamaindex 
+      * With PGVector
+   * Natural Language Communications with Postgres
+      * <p align="center">
+            <img src="./img/athena-nl-sql.png" alt="alt text" width="250px"/>
+         </p>
 
 ### Database 
 
@@ -39,13 +43,12 @@ Project provides:
  * Stop  `docker-compose stop`
  * Down  `docker-compose down -v`
  * Logs  `docker-compose logs -f -t`
+ * Remove all container and volumes `docker rm -vf $(docker ps -aq)`\
+ * Remove all images `docker rmi -f $(docker images -aq)`
+ * Delete everything: `docker system prune -a --volumes`
 
  If you are using `Colima` client:
 
  * Start `colima start`
     * In case you receive error `137` - add more RAM `colima start --memory 8`
  * Stop `colima stop`
-
- ### Propmpt 
-
- * Use `.prompt-generating-super-prompt.txt` to generate good prompt for LLM

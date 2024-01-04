@@ -1,8 +1,8 @@
 from flask import request, jsonify
 from transformers import pipeline
 
-def initialize_routes(app):
-# Initialize the model
+def embedding_routes(app):
+
     model_name = "baai/bge-base-en-v1.5"
     embedder = pipeline('feature-extraction', model=model_name)
 

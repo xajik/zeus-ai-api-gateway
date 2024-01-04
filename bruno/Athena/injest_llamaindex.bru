@@ -1,0 +1,17 @@
+meta {
+  name: injest_llamaindex
+  type: http
+  seq: 5
+}
+
+post {
+  url: http://{{host}}:{{port_athena}}/injest_llamaindex
+  body: json
+  auth: none
+}
+
+body:json {
+  {
+    "path":"../data"
+  }
+}

@@ -25,6 +25,7 @@ services:
       retries: 3
     networks:
       - pgadm_db_network
+      - service_db_network
   db-admin:
     image: dpage/pgadmin4:latest
     restart: always
@@ -44,6 +45,7 @@ services:
     networks:
       - pgadm_db_network
   athena:
+    restart: always
     build:
       context: ./athena
     ports:
@@ -51,11 +53,22 @@ services:
     volumes:
       - ./athena:/app
     environment:
-      - TRANSFORMERS_CACHE=/app/cache
-      - HF_HOME=/app/cache
+      TRANSFORMERS_CACHE: /app/cache
+      HF_HOME: /app/cache
+      RDS_HOSTNAME: ${RDS_HOSTNAME}
+      RDS_PORT: ${RDS_PORT}
+      RDS_DB_NAME: ${RDS_DB_NAME}
+      RDS_USERNAME: ${RDS_USERNAME}
+      RDS_PASSWORD: ${RDS_PASSWORD}
+    depends_on:
+      - db
+    networks:
+      - service_db_network
 networks:
   pgadm_db_network:
     name: pgadm-db-network
+  service_db_network:
+    name: service-db-network
 volumes:
   postgres:
     driver: local

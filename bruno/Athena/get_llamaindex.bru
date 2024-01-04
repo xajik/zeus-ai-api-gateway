@@ -1,0 +1,15 @@
+meta {
+  name: get_llamaindex
+  type: http
+  seq: 4
+}
+
+get {
+  url: http://{{host}}:{{port_athena}}/get_llamaindex?msg=What is YC?
+  body: json
+  auth: none
+}
+
+query {
+  msg: What is YC?
+}
