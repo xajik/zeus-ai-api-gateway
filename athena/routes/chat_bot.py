@@ -2,9 +2,7 @@ from flask import render_template, request
 from openai import OpenAI
 import os
 
-model_3_5 = "gpt-3.5-turbo"
 model_4_t = "gpt-4-1106-preview"
-
 
 def get_completion(client, prompt, model=model_4_t):
     messages = [{"role": "user", "content": prompt}]

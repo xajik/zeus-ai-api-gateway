@@ -9,7 +9,6 @@ from langchain.prompts import (
 )
 from langchain_community.chat_models import ChatOpenAI
 
-model_3_5 = "gpt-3.5-turbo"
 model_4_t = "gpt-4-1106-preview"
 
 
@@ -19,7 +18,7 @@ def langchain_routes(app):
 
     @app.route("/langchain")
     def home_langchain():
-        return render_template("index.html", agent="Langchain", get_endpoint = "/get_langchain")
+        return render_template("index.html", agent="Langchain", get_endpoint="/get_langchain")
 
     @app.route("/get_langchain")
     def get_langchain_bot_response():
