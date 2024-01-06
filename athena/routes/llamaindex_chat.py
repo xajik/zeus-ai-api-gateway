@@ -15,9 +15,9 @@ RDS_PASSWORD = os.getenv('RDS_PASSWORD')
 table_name = "llmama_rag_vector"
 
 
-def llamaindex_routes(app):
+def llamaindex_routes(app, connection_string):
 
-    query_engine = llamaindex_query_engine()
+    query_engine = llamaindex_query_engine(connection_string)
 
     @app.route("/llamaindex")
     def home_llamaindex():
@@ -35,26 +35,24 @@ def llamaindex_routes(app):
         path = data.get('path')
         if not path:
             return jsonify({"error": "Missing 'path' parameter"}), 400        
-        injest_by_path(path=path)
+        injest_by_path(path, connection_string)
         return f"Ingested {path} in the RAG index"
         
 
-def llamaindex_query_engine():
-    vector_store = get_vector_store()
+def llamaindex_query_engine(connection_string):
+    vector_store = get_vector_store(connection_string)
     index = VectorStoreIndex.from_vector_store(vector_store)
     query_engine = index.as_query_engine()
     return query_engine
 
-def injest_by_path(path):
+def injest_by_path(path, connection_string):
     documents = SimpleDirectoryReader(path).load_data()
-    vector_store = get_vector_store()
+    vector_store = get_vector_store(connection_string)
     storage_context = StorageContext.from_defaults(vector_store=vector_store)
     query_engine = VectorStoreIndex.from_documents(documents, storage_context=storage_context)
     return query_engine
 
-def get_vector_store():
-    connection_string = f"postgresql://{RDS_USERNAME}:{RDS_PASSWORD}@db:{RDS_PORT}/{RDS_DB_NAME}?sslmode=disable"
-    print("Connection string:", connection_string)
+def get_vector_store(connection_string):
     conn = psycopg2.connect(connection_string)
     conn.autocommit = True
     url = make_url(connection_string)

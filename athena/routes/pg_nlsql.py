@@ -4,22 +4,11 @@ from llama_index.indices.struct_store import (
     NLSQLTableQueryEngine,
 )
 from llama_index.indices.struct_store.sql_query import NLSQLTableQueryEngine
-import os
 from sqlalchemy import create_engine
 
-RDS_HOSTNAME = os.getenv('RDS_HOSTNAME')
-RDS_PORT = os.getenv('RDS_PORT')
-RDS_DB_NAME = os.getenv('RDS_DB_NAME')
-RDS_USERNAME = os.getenv('RDS_USERNAME')
-RDS_PASSWORD = os.getenv('RDS_PASSWORD')
+def pg_nlsql_routes(app, connection_string):
 
-model_3_5 = "gpt-3.5-turbo"
-model_4_t = "gpt-4-1106-preview"
-
-
-def pg_nlsql_routes(app):
-
-    query_engine = create_nlsql_query_engine()
+    query_engine = create_nlsql_query_engine(connection_string)
 
     @app.route("/nlsql")
     def home_nlsql():
@@ -32,8 +21,7 @@ def pg_nlsql_routes(app):
         return f"{response.response} \n \t  SQL = {response.metadata['sql_query']}"
 
 
-def create_nlsql_query_engine():
-    connection_string = f"postgresql://{RDS_USERNAME}:{RDS_PASSWORD}@db:{RDS_PORT}/{RDS_DB_NAME}?sslmode=disable"
+def create_nlsql_query_engine(connection_string):
     engine = create_engine(connection_string)
     sql_database = SQLDatabase(engine)
     # Create a structured store to offer a context to GPT
